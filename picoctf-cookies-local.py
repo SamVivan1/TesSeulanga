@@ -1,25 +1,43 @@
 #!/home/samvivan/Documents/CyberSecurity/picoCTF_Cookies/.venv/bin/python
 """
-Program ini dibuat untuk mencari flag pada website http://mercury.picoctf.net:29649/
-dengan mencoba berbagai nilai cookie 'name' dari 0 hingga 99.
+Skrip ini adalah alat untuk menyelesaikan tantangan picoCTF Cookies. Skrip ini mengirimkan permintaan HTTP ke URL target dengan nilai cookie yang berbeda dan mencari flag dalam respons.
 
-Cara kerja program:
-1. Mengimpor modul yang diperlukan: signal, sys, requests, dan BeautifulSoup.
-2. Mendefinisikan URL target.
-3. Mendefinisikan kode warna untuk output terminal.
-4. Mendefinisikan fungsi check_flag untuk memeriksa apakah nilai yang ditemukan mengandung 'picoCTF'.
-5. Mendefinisikan fungsi signal_handler untuk menangani sinyal SIGINT (Ctrl+C) dan mengakhiri program.
-6. Melakukan loop dari 0 hingga 99.
-7. Pada setiap iterasi, program akan:
-    a. Membuat cookie dengan nama 'name' dan nilai iterasi saat ini.
-    b. Mengirim permintaan GET ke URL target dengan cookie tersebut.
-    c. Jika respons berhasil (status_code 200), program akan:
-        i. Mengambil nilai dari kelas 'jumbotron' pada halaman HTML.
-        ii. Memeriksa apakah nilai tersebut mengandung 'picoCTF' dengan memanggil fungsi check_flag.
-        iii. Jika check_flag mengembalikan True, program akan keluar.
-        iv. Jika tidak, program akan mencetak cookie dan nilai yang ditemukan.
-    d. Jika terjadi error, program akan mencetak error tersebut.
-8. Jika setelah 100 percobaan tidak ditemukan flag, program akan mencetak pesan bahwa flag tidak ditemukan.
+Penggunaan:
+1. Jalankan skrip.
+2. Masukkan URL target saat diminta.
+3. Skrip akan mencoba 100 nilai cookie yang berbeda (0 hingga 99) dan mencetak respons untuk setiap upaya.
+4. Jika flag ditemukan dalam respons, skrip akan mencetak flag dengan warna hijau, dan skrip akan keluar.
+
+Skrip ini menggunakan library berikut:
+- signal: untuk menangani interupsi keyboard (Ctrl+C)
+- sys: untuk keluar dari skrip
+- requests: untuk mengirim permintaan HTTP
+- BeautifulSoup: untuk mengurai respons HTML
+
+Skrip ini mendefinisikan fungsi berikut:
+- check_flag(value): Memeriksa apakah nilai yang diberikan berisi string 'picoCTF'. Jika ya, fungsi ini akan mencetak nilai cookie dan flag dengan warna hijau, dan mengembalikan True.
+- signal_handler(sig, frame): Menangani sinyal interupsi keyboard (Ctrl+C) dengan mencetak pesan dalam warna merah dan keluar dari skrip.
+
+Skrip ini juga mendefinisikan beberapa kode escape ANSI untuk output berwarna:
+- RED: untuk warna merah
+- RESET: untuk mereset warna ke default
+- YELLOW: untuk warna kuning
+- GREEN: untuk warna hijau
+
+Skrip dimulai dengan mencetak banner dan prompt URL target dalam warna kuning. Kemudian, skrip memasuki loop yang beriterasi dari 0 hingga 99.
+
+Dalam setiap iterasi, skrip:
+1. Membuat kamus cookie dengan nilai iterasi saat ini sebagai kunci 'name'.
+2. Mengirim permintaan HTTP GET ke URL target dengan cookie.
+3. Jika kode status respons adalah 200 (OK):
+   a. Mengurai respons HTML menggunakan BeautifulSoup.
+   b. Mencari elemen dengan kelas 'jumbotron' dan mengekstrak teksnya.
+   c. Memanggil fungsi check_flag dengan teks yang diekstrak.
+   d. Jika fungsi check_flag mengembalikan True, skrip akan keluar.
+   e. Mencetak nilai cookie dan teks yang diekstrak dalam warna kuning.
+4. Jika kode status respons bukan 200, skrip akan melanjutkan ke iterasi berikutnya.
+
+Catatan: Skrip ini hanya untuk tujuan edukasi dan tidak boleh digunakan untuk aktivitas ilegal.
 """
 
 import signal
