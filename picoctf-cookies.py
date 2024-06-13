@@ -44,7 +44,7 @@ print(r"""
 """)
 print(f"picoCTF Cookies Challenge Tool{GREEN}\nhttps://github.com/SamVivan1/picoCTF_Cookies{RESET}\n")
 
-url = 'http://mercury.picoctf.net:29649/'
+url = 'http://mercury.picoctf.net:<PORT>/'
 
 def check_flag(value):
     if 'picoCTF' in value:
