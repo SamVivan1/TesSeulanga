@@ -1,8 +1,16 @@
-# Cookies Challenge Solver
-
 ## English
 
 This script is a tool for solving the picoCTF Cookies Challenge. It sends HTTP requests to a target URL with different cookie values and searches for the flag in the response.
+
+## How to install
+
+1. Install Python: `pkg install python`
+2. Install required libraries: `pip install -r requirements.txt`
+3. Clone the repository: `git clone https://github.com/SamVivan1/picoCTF_Cookies.git`
+4. Navigate to the project directory: `cd picoCTF_Cookies`
+5. List the files: `ls`
+6. Make the script executable: `chmod +x picoctf-cookies.py`
+7. Run the script: `python3 picoctf-cookies.py`
 
 ### Usage:
 
@@ -28,6 +36,16 @@ Note: This script is intended for educational purposes only and should not be us
 ## Bahasa Indonesia
 
 Skrip ini adalah alat untuk menyelesaikan tantangan picoCTF Cookies. Skrip ini mengirimkan permintaan HTTP ke URL target dengan nilai cookie yang berbeda dan mencari bendera dalam respons.
+
+### Cara Instalasi
+
+1. Instal Python: `pkg install python`
+2. Instal pustaka yang diperlukan: `pip install -r requirements.txt`
+3. Kloning repositori: `git clone https://github.com/SamVivan1/picoCTF_Cookies.git`
+4. Navigasi ke direktori proyek: `cd picoCTF_Cookies`
+5. Daftar file: `ls`
+6. Buat skrip dapat dieksekusi: `chmod +x picoctf-cookies.py`
+7. Jalankan skrip: `python3 picoctf-cookies.py`
 
 ### Penggunaan:
 
