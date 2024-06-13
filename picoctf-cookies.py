@@ -68,7 +68,7 @@ for i in range(100):
             hasil = value.text.strip()
             if check_flag(hasil):
                 sys.exit(0)
-            print(f"Cookie: {YELLOW}{nilai}{RESET}, Hasil: {YELLOW}{hasil}{RESET}")
+            print(f"Cookie: {YELLOW}{nilai}{RESET}, Value: {YELLOW}{hasil}{RESET}")
         else:
             print(f'Ada error: {response.status_code}')
     except requests.exceptions.RequestException as e:
