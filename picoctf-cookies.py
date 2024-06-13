@@ -1,25 +1,44 @@
 #!/bin/python
+#!/bin/python
 """
-Program ini dibuat untuk mencari flag pada website http://mercury.picoctf.net:29649/
-dengan mencoba berbagai nilai cookie 'name' dari 0 hingga 99.
+This script is a tool for solving the picoCTF Cookies Challenge. It sends HTTP requests to a target URL with different cookie values and searches for the flag in the response.
 
-Cara kerja program:
-1. Mengimpor modul yang diperlukan: signal, sys, requests, dan BeautifulSoup.
-2. Mendefinisikan URL target.
-3. Mendefinisikan kode warna untuk output terminal.
-4. Mendefinisikan fungsi check_flag untuk memeriksa apakah nilai yang ditemukan mengandung 'picoCTF'.
-5. Mendefinisikan fungsi signal_handler untuk menangani sinyal SIGINT (Ctrl+C) dan mengakhiri program.
-6. Melakukan loop dari 0 hingga 99.
-7. Pada setiap iterasi, program akan:
-    a. Membuat cookie dengan nama 'name' dan nilai iterasi saat ini.
-    b. Mengirim permintaan GET ke URL target dengan cookie tersebut.
-    c. Jika respons berhasil (status_code 200), program akan:
-        i. Mengambil nilai dari kelas 'jumbotron' pada halaman HTML.
-        ii. Memeriksa apakah nilai tersebut mengandung 'picoCTF' dengan memanggil fungsi check_flag.
-        iii. Jika check_flag mengembalikan True, program akan keluar.
-        iv. Jika tidak, program akan mencetak cookie dan nilai yang ditemukan.
-    d. Jika terjadi error, program akan mencetak error tersebut.
-8. Jika setelah 100 percobaan tidak ditemukan flag, program akan mencetak pesan bahwa flag tidak ditemukan.
+Usage:
+1. Run the script.
+2. Enter the target URL when prompted.
+3. The script will try 100 different cookie values (0 to 99) and print the response for each attempt.
+4. If the flag is found in the response, it will be printed in green color, and the script will exit.
+
+The script uses the following libraries:
+- signal: for handling keyboard interrupts (Ctrl+C)
+- sys: for exiting the script
+- requests: for sending HTTP requests
+- BeautifulSoup: for parsing HTML responses
+
+The script defines the following functions:
+- check_flag(value): Checks if the given value contains the string 'picoCTF'. If so, it prints the cookie value and the flag in green color, and returns True.
+- signal_handler(sig, frame): Handles the keyboard interrupt signal (Ctrl+C) by printing a message in red color and exiting the script.
+
+The script also defines some ANSI escape codes for colored output:
+- RED: for red color
+- RESET: for resetting the color to default
+- YELLOW: for yellow color
+- GREEN: for green color
+
+The script starts by printing a banner and the target URL prompt in yellow color. Then, it enters a loop that iterates from 0 to 99.
+
+In each iteration, the script:
+1. Creates a cookie dictionary with the current iteration value as the 'name' key.
+2. Sends an HTTP GET request to the target URL with the cookie.
+3. If the response status code is 200 (OK):
+   a. Parses the HTML response using BeautifulSoup.
+   b. Finds the element with the class 'jumbotron' and extracts its text.
+   c. Calls the check_flag function with the extracted text.
+   d. If the check_flag function returns True, the script exits.
+   e. Prints the cookie value and the extracted text in yellow color.
+4. If the response status code is not 200, the script continues to the next iteration.
+
+Note: This script is intended for educational purposes only and should not be used for any malicious activities.
 """
 
 import signal
@@ -33,13 +52,13 @@ YELLOW = '\033[93m'
 GREEN = '\033[92m'
 
 print(r"""
-  /$$$$$$                      /$$       /$$                    
- /$$__  $$                    | $$      |__/                    
-| $$  \__/  /$$$$$$   /$$$$$$ | $$   /$$ /$$  /$$$$$$   /$$$$$$$
-| $$       /$$__  $$ /$$__  $$| $$  /$$/| $$ /$$__  $$ /$$_____/
-| $$      | $$  \ $$| $$  \ $$| $$$$$$/ | $$| $$$$$$$$|  $$$$$$ 
-| $$    $$| $$  | $$| $$  | $$| $$_  $$ | $$| $$_____/ \____  $$
-|  $$$$$$/|  $$$$$$/|  $$$$$$/| $$ \  $$| $$|  $$$$$$$ /$$$$$$$/
+  /$$$                      /$       /$                    
+ /$__  $                    | $      |__/                    
+| $  \__/  /$$$   /$$$ | $   /$ /$  /$$$   /$$$$
+| $       /$__  $ /$__  $| $  /$/| $ /$__  $ /$_____/
+| $      | $  \ $| $  \ $| $$$/ | $| $$$$|  $$$ 
+| $    $| $  | $| $  | $| $_  $ | $| $_____/ \____  $
+|  $$$/|  $$$/|  $$$/| $ \  $| $|  $$$$ /$$$$/
  \______/  \______/  \______/ |__/  \__/|__/ \_______/|_______/
 """)
 print(f"picoCTF Cookies Challenge Tool{GREEN}\nhttps://github.com/SamVivan1/picoCTF_Cookies{RESET}\n")

@@ -1,49 +1,51 @@
-English:
+# Cookies Challenge Solver
 
-# Flag Finder Program
+## English
 
-This program is designed to find the flag on the website http://mercury.picoctf.net:29649/ by trying various values of the 'name' cookie from 0 to 99.
+This script is a tool for solving the picoCTF Cookies Challenge. It sends HTTP requests to a target URL with different cookie values and searches for the flag in the response.
 
-## How the Program Works
+### Usage:
 
-1. Import the required modules: `signal`, `sys`, `requests`, and `BeautifulSoup`.
-2. Define the target URL.
-3. Define color codes for terminal output.
-4. Define the `check_flag` function to check if the found value contains 'picoCTF'.
-5. Define the `signal_handler` function to handle the `SIGINT` signal (Ctrl+C) and exit the program.
-6. Loop from 0 to 99.
-7. In each iteration, the program will:
-   a. Create a cookie with the name 'name' and the current iteration value.
-   b. Send a GET request to the target URL with the cookie.
-   c. If the response is successful (status_code 200), the program will:
-   i. Retrieve the value from the 'jumbotron' class on the HTML page.
-   ii. Check if the value contains 'picoCTF' by calling the `check_flag` function.
-   iii. If `check_flag` returns True, the program will exit.
-   iv. If not, the program will print the cookie and the found value.
-   d. If an error occurs, the program will print the error.
-8. If after 100 attempts the flag is not found, the program will print a message that the flag was not found.
+1. Run the script.
+2. Enter the target URL when prompted.
+3. The script will try 100 different cookie values (0 to 99) and print the response for each attempt.
+4. If the flag is found in the response, it will be printed in green color, and the script will exit.
 
-Bahasa Indonesia:
+### Libraries:
 
-# Program Pencari Flag
+- signal: for handling keyboard interrupts (Ctrl+C)
+- sys: for exiting the script
+- requests: for sending HTTP requests
+- BeautifulSoup: for parsing HTML responses
 
-Program ini dibuat untuk mencari flag pada website http://mercury.picoctf.net:29649/ dengan mencoba berbagai nilai cookie 'name' dari 0 hingga 99.
+### Functions:
 
-## Cara Kerja Program
+- check_flag(value): Checks if the given value contains the string 'picoCTF'. If so, it prints the cookie value and the flag in green color, and returns True.
+- signal_handler(sig, frame): Handles the keyboard interrupt signal (Ctrl+C) by printing a message in red color and exiting the script.
 
-1. Mengimpor modul yang diperlukan: `signal`, `sys`, `requests`, dan `BeautifulSoup`.
-2. Mendefinisikan URL target.
-3. Mendefinisikan kode warna untuk output terminal.
-4. Mendefinisikan fungsi `check_flag` untuk memeriksa apakah nilai yang ditemukan mengandung 'picoCTF'.
-5. Mendefinisikan fungsi `signal_handler` untuk menangani sinyal `SIGINT` (Ctrl+C) dan mengakhiri program.
-6. Melakukan loop dari 0 hingga 99.
-7. Pada setiap iterasi, program akan:
-   a. Membuat cookie dengan nama 'name' dan nilai iterasi saat ini.
-   b. Mengirim permintaan GET ke URL target dengan cookie tersebut.
-   c. Jika respons berhasil (status_code 200), program akan:
-   i. Mengambil nilai dari kelas 'jumbotron' pada halaman HTML.
-   ii. Memeriksa apakah nilai tersebut mengandung 'picoCTF' dengan memanggil fungsi `check_flag`.
-   iii. Jika `check_flag` mengembalikan True, program akan keluar.
-   iv. Jika tidak, program akan mencetak cookie dan nilai yang ditemukan.
-   d. Jika terjadi error, program akan mencetak error tersebut.
-8. Jika setelah 100 percobaan tidak ditemukan flag, program akan mencetak pesan bahwa flag tidak ditemukan.
+Note: This script is intended for educational purposes only and should not be used for any malicious activities.
+
+## Bahasa Indonesia
+
+Skrip ini adalah alat untuk menyelesaikan tantangan picoCTF Cookies. Skrip ini mengirimkan permintaan HTTP ke URL target dengan nilai cookie yang berbeda dan mencari bendera dalam respons.
+
+### Penggunaan:
+
+1. Jalankan skrip.
+2. Masukkan URL target saat diminta.
+3. Skrip akan mencoba 100 nilai cookie yang berbeda (0 hingga 99) dan mencetak respons untuk setiap upaya.
+4. Jika bendera ditemukan dalam respons, itu akan dicetak dengan warna hijau, dan skrip akan keluar.
+
+### Pustaka:
+
+- signal: untuk menangani interupsi keyboard (Ctrl+C)
+- sys: untuk keluar dari skrip
+- requests: untuk mengirim permintaan HTTP
+- BeautifulSoup: untuk mengurai respons HTML
+
+### Fungsi:
+
+- check_flag(value): Memeriksa apakah nilai yang diberikan berisi string 'picoCTF'. Jika demikian, fungsi ini akan mencetak nilai cookie dan bendera dengan warna hijau, dan mengembalikan True.
+- signal_handler(sig, frame): Menangani sinyal interupsi keyboard (Ctrl+C) dengan mencetak pesan dalam warna merah dan keluar dari skrip.
+
+Catatan: Skrip ini hanya untuk tujuan pendidikan dan tidak boleh digunakan untuk aktivitas ilegal.
