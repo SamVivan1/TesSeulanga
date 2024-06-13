@@ -1,4 +1,4 @@
-#!/home/samvivan/Documents/CyberSecurity/picoCTF_Cookies/.venv/bin/python
+#!/bin/python
 """
 Program ini dibuat untuk mencari flag pada website http://mercury.picoctf.net:29649/
 dengan mencoba berbagai nilai cookie 'name' dari 0 hingga 99.
@@ -42,7 +42,7 @@ print(r"""
 |  $$$$$$/|  $$$$$$/|  $$$$$$/| $$ \  $$| $$|  $$$$$$$ /$$$$$$$/
  \______/  \______/  \______/ |__/  \__/|__/ \_______/|_______/
 """)
-print(f"{GREEN}Copyright (c) 2024 Samvivan. All Rights Reserved.{RESET}\n")
+print(f"picoCTF Cookies Challenge Tool{GREEN}\nhttps://github.com/SamVivan1/picoCTF_Cookies{RESET}\n")
 
 url = 'http://mercury.picoctf.net:29649/'
 

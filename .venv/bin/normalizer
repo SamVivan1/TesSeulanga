@@ -1,4 +1,4 @@
-#!/home/samvivan/Documents/CyberSecurity/TesSeulanga/.venv/bin/python
+#!/home/samvivan/Documents/CyberSecurity/picoCTF_Cookies/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
