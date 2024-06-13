@@ -44,7 +44,8 @@ print(r"""
 """)
 print(f"picoCTF Cookies Challenge Tool{GREEN}\nhttps://github.com/SamVivan1/picoCTF_Cookies{RESET}\n")
 
-url = 'http://mercury.picoctf.net:29649/'
+url = input(f"{RED}Target URL:{RESET} {YELLOW}")
+print(f"{RED}Searching for flag...{RESET}\n")
 
 def check_flag(value):
     if 'picoCTF' in value:
@@ -68,7 +69,7 @@ for i in range(100):
             hasil = value.text.strip()
             if check_flag(hasil):
                 sys.exit(0)
-            print(f"Cookie: {YELLOW}{nilai}{RESET}, Hasil: {YELLOW}{hasil}{RESET}")
+            print(f"{RESET}Cookie: {YELLOW}{nilai}{RESET}, Value: {YELLOW}{hasil}{RESET}")
         else:
             print(f'Ada error: {response.status_code}')
     except requests.exceptions.RequestException as e:
