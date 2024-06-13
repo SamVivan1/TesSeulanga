@@ -23,7 +23,7 @@ This script is a tool for solving the picoCTF Cookies Challenge. It sends HTTP r
 - check_flag(value): Checks if the given value contains the string 'picoCTF'. If so, it prints the cookie value and the flag in green color, and returns True.
 - signal_handler(sig, frame): Handles the keyboard interrupt signal (Ctrl+C) by printing a message in red color and exiting the script.
 
-<span style="color:red">Note: This script is intended for educational purposes only and should not be used for any malicious activities.</span>
+Note: This script is intended for educational purposes only and should not be used for any malicious activities.
 
 ## Bahasa Indonesia
 
@@ -48,4 +48,4 @@ Skrip ini adalah alat untuk menyelesaikan tantangan picoCTF Cookies. Skrip ini m
 - check_flag(value): Memeriksa apakah nilai yang diberikan berisi string 'picoCTF'. Jika demikian, fungsi ini akan mencetak nilai cookie dan bendera dengan warna hijau, dan mengembalikan True.
 - signal_handler(sig, frame): Menangani sinyal interupsi keyboard (Ctrl+C) dengan mencetak pesan dalam warna merah dan keluar dari skrip.
 
-<span style="color:red">Catatan: Skrip ini hanya untuk tujuan pendidikan dan tidak boleh digunakan untuk aktivitas ilegal.</span>
+Catatan: Skrip ini hanya untuk tujuan pendidikan dan tidak boleh digunakan untuk aktivitas ilegal.
